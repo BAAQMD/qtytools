@@ -11,19 +11,14 @@ total_emissions_by <- function (input_data, ..., digits = Inf, signif = Inf, ver
 
   input_vars <- names(input_data)
   qty_vars <- select_vars(input_vars, dplyr::matches("_qty$"))
-  unit_vars <- str_replace_all(qty_vars, "_qty$", "_unit")
 
-  # Drop all `_qty` vars other than `ems_qty`, and all `_unit` vars other than `ems_unit`
-  prepared <- drop_vars(input_data, setdiff(qty_vars, "ems_qty"), setdiff(unit_vars, "ems_unit"))
+  #unit_vars <- str_replace_all(qty_vars, "_qty$", "_unit")
+
+  # Drop all `_qty` vars other than `ems_qty`
+  prepared <- drop_vars(
+    input_data,
+    setdiff(qty_vars, "ems_qty"))
 
   total_quantities_by(prepared, ..., digits = digits, signif = signif, verbose = verbose)
-
-  # total_quantities_by(
-  #   input_data,
-  #   ...,
-  #   qty_var = "ems_qty",
-  #   unit_var = "ems_unit",
-  #   digits = digits,
-  #   signif = signif)
 
 }
