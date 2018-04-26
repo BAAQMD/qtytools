@@ -29,7 +29,6 @@ ems_and_tput_by_year <- tibble(
   tput_qty = c(230, 112),
   tput_unit = "MMscf")
 
-
 ems_by_pol <- tibble(
   pol_abbr = c("PM", "TOG"),
   ems_qty = c(84 + 128, 114 + 156),

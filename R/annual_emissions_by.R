@@ -21,12 +21,4 @@ annual_emissions_by <- function (input_data, ..., digits = Inf, signif = Inf, ve
     signif = signif,
     verbose = verbose)
 
-  # annual_quantities_by(
-  #   input_data,
-  #   ...,
-  #   qty_var = "ems_qty",
-  #   unit_var = "ems_unit",
-  #   digits = digits,
-  #   signif = signif)
-
 }
