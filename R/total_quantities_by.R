@@ -1,24 +1,3 @@
-#' #' Total quantities, ignoring NAs
-#' #'
-#' #' @export
-#' total_quantities_by <- function (input_data, ..., qty_var = qty_var, unit_var = unit_var, digits = Inf, signif = Inf) {
-#'
-#'   if (missing(qty_var)) qty_var <- find_var(input_data, suffix = "_qty")
-#'   if (missing(unit_var)) unit_var <- find_var(input_data, suffix = "_unit")
-#'
-#'   grp_vars <-
-#'     select_vars(names(input_data), ...)
-#'
-#'   total_quantities_by_(
-#'     input_data,
-#'     grp_vars = grp_vars,
-#'     qty_var = qty_var,
-#'     unit_var = unit_var,
-#'     digits = digits,
-#'     signif = signif)
-#'
-#' }
-
 #' Sum up quantities in tabular data
 #'
 #' Sum, ignoring `NA`s, all of the variables in `input_data` whose names end in `_qty`.
