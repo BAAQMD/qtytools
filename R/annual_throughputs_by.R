@@ -17,12 +17,4 @@ annual_throughputs_by <- function (input_data, ..., digits = Inf, signif = Inf, 
     signif = signif,
     verbose = verbose)
 
-  # annual_quantities_by(
-  #   input_data,
-  #   ...,
-  #   qty_var = "tput_qty",
-  #   unit_var = "tput_unit",
-  #   digits = digits,
-  #   signif = signif)
-
 }
