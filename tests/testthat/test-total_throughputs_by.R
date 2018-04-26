@@ -2,8 +2,8 @@ context("total_throughputs_by")
 
 test_that("total throughputs by year", {
 
-  expect_equal(
-    tput_by_year,
-    total_throughputs_by(ems_and_tput, year))
+  input_data <- ems_and_tput %>% mutate(cf_qty = runif(nrow(.)))
+  totaled <- total_throughputs_by(input_data, year)
+  expect_equal(totaled, tput_by_year)
 
 })

@@ -25,7 +25,10 @@ total_quantities_by <- function (input_data, ..., digits = Inf, signif = Inf, ve
 
   input_vars <- names(input_data)
   qty_vars <- select_vars(input_vars, dplyr::matches("_qty$"))
-  unit_vars <- str_replace_all(qty_vars, "_qty$", "_unit")
+
+  unit_vars <- intersect(
+    input_vars,
+    str_replace_all(qty_vars, "_qty$", "_unit"))
 
   by_vars <- select_vars(input_vars, ...)
   msg("by_vars is: ", str_csv(by_vars))
