@@ -12,10 +12,12 @@
 #' @export
 top_q <- function (x, q, wt, na.rm = TRUE, .arrange = FALSE, verbose = getOption("verbose")) {
 
-  require(lazyeval)
-  require(rlang)
-  require(dplyr)
-  require(glue)
+  suppressPackageStartupMessages({
+    require(lazyeval)
+    require(rlang)
+    require(dplyr)
+    require(glue)
+  })
 
   wt <- enquo(wt)
   if (quo_is_missing(wt)) {
