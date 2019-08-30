@@ -1,7 +1,7 @@
 Package: qtytools
 Type: Package
 Title: Parse, Format, and Manipulate Quantities
-Version: 0.3.2
+Version: 2019.08.30
 Author: David Holstius
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: Parse, format, summarise, tabulate, digest, interpolate, and validate integers and quantities.
@@ -17,7 +17,7 @@ Depends:
 Reverse-depends: inventory
 LazyData: true
 Suggests: testthat
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Roxygen: list(markdown = TRUE)
 Collate: 
     'GM.R'
@@ -36,6 +36,7 @@ Collate:
     'minimum.R'
     'most_frequent.R'
     'multiply_each.R'
+    'print.R'
     'rank_fraction.R'
     'rank_product.R'
     'scale_emissions_by.R'
