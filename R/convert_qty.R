@@ -23,22 +23,41 @@ convert_quantities <- function (x, from, to) {
   require(units)
 
   make_unit_ <- function (u) {
-    # If at first you don't succeed, try replacing plural forms with singular forms
-    tryCatch(make_unit(u), warning = function (e) {
+
+    try_handle_plural <- function (e) {
+
       parts <- unlist(str_split(u, pattern = "/", n = 2))
       numerator <- parts[1]
       denominator <- parts[2]
       as_singular <- function (x) str_replace(x, "s$", "")
-      recombined <- str_c(as_singular(numerator), as_singular(na.omit(denominator)), sep = "/")
-      make_unit(recombined)
-    })
+
+      recombined <- str_c(
+        as_singular(numerator),
+        as_singular(na.omit(denominator)),
+        sep = "/")
+
+      as_units(recombined)
+
+    }
+
+    # If at first you don't succeed, try replacing plural forms with singular forms
+    tryCatch(
+      as_units(u),
+      warning = try_handle_plural,
+      error = try_handle_plural)
+
   }
 
-  if (is.character(from)) from <- make_unit_(from)
-  if (is.character(to)) to <- make_unit_(to)
+  if (is.character(from)) {
+    from <- make_unit_(from)
+  }
 
-  original <- as_units(x, value = from)
-  converted <- set_units(original, value = to, mode = "standard")
+  if (is.character(to)) {
+    to <- make_unit_(to)
+  }
+
+  original <- as_units(x, from)
+  converted <- set_units(original, to, mode = "standard")
 
   return(converted)
 
