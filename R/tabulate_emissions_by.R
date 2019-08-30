@@ -1,7 +1,13 @@
 #' @describeIn tabulate_quantities_by Tabulate `ems_qty`
 #'
 #' @export
-tabulate_emissions_by <- function (input_data, ..., digits = Inf, signif = Inf, verbose = getOption("verbose")) {
+tabulate_emissions_by <- function (
+  input_data,
+  ...,
+  digits = Inf,
+  signif = Inf,
+  verbose = getOption("verbose")
+) {
 
   input_vars <- names(input_data)
 
@@ -15,12 +21,13 @@ tabulate_emissions_by <- function (input_data, ..., digits = Inf, signif = Inf, 
     input_data,
     setdiff(qty_vars, "ems_qty"))
 
-  tabulated <- tabulate_quantities_by(
-    prepared,
-    ...,
-    digits = digits,
-    signif = signif,
-    verbose = verbose)
+  tabulated <-
+    tabulate_quantities_by(
+      prepared,
+      ...,
+      digits = digits,
+      signif = signif,
+      verbose = verbose)
 
   return(tabulated)
 

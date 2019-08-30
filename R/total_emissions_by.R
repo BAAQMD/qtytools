@@ -7,7 +7,13 @@
 #' @seealso [annual_emissions_by()]
 #'
 #' @export
-total_emissions_by <- function (input_data, ..., digits = Inf, signif = Inf, verbose = getOption("verbose")) {
+total_emissions_by <- function (
+  input_data,
+  ...,
+  digits = Inf,
+  signif = Inf,
+  verbose = getOption("verbose")
+) {
 
   input_vars <- names(input_data)
   qty_vars <- select_vars(input_vars, dplyr::matches("_qty$"))
@@ -19,6 +25,14 @@ total_emissions_by <- function (input_data, ..., digits = Inf, signif = Inf, ver
     input_data,
     setdiff(qty_vars, "ems_qty"))
 
-  total_quantities_by(prepared, ..., digits = digits, signif = signif, verbose = verbose)
+  totaled <-
+    total_quantities_by(
+      prepared,
+      ...,
+      digits = digits,
+      signif = signif,
+      verbose = verbose)
+
+  return(totaled)
 
 }

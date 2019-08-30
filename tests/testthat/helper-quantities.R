@@ -48,8 +48,8 @@ ems_and_tput_by_year_and_pol <- tibble(
   ems_unit = "tons/yr",
   tput_unit = "MMscf")
 
-BayArea_GHGRP_emission_data <-
-  GHGRP::GHGRP_emission_data %>%
-  semi_join(GHGRP::GHGRP_crosswalk %>% filter(!is.na(DB_fac_id)), by = "ARB_fac_id") %>%
-  rename(ems_qty = MMTCO2eq) %>%
-  mutate(ems_unit = "MMTCO2eq")
+# BayArea_GHGRP_emission_data <-
+#   GHGRP::GHGRP_emission_data %>%
+#   semi_join(GHGRP::GHGRP_crosswalk %>% filter(!is.na(DB_fac_id)), by = "ARB_fac_id") %>%
+#   rename(ems_qty = MMTCO2eq) %>%
+#   mutate(ems_unit = "MMTCO2eq")

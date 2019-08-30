@@ -16,7 +16,13 @@
 #' @seealso [total()]
 #'
 #' @export
-total_quantities_by <- function (input_data, ..., digits = Inf, signif = Inf, verbose = getOption("verbose")) {
+total_quantities_by <- function (
+  input_data,
+  ...,
+  digits = Inf,
+  signif = Inf,
+  verbose = getOption("verbose")
+) {
 
   require(lazyeval)
   require(rlang)
@@ -39,34 +45,22 @@ total_quantities_by <- function (input_data, ..., digits = Inf, signif = Inf, ve
   totaled <- summarise_at(grouped, vars(one_of(qty_vars)), funs(total))
   ungrouped <- ungroup(totaled)
 
-  select(ungrouped, by_vars, qty_vars, unit_vars, everything())
+  tidied <-
+    select(
+      ungrouped,
+      by_vars,
+      qty_vars,
+      -unit_vars,
+      everything(),
+      unit_vars)
+
+  msg("adding 'inventory' class")
+  class(tidied) <-
+    union(
+      c("inventory"),
+      class(tidied))
+
+  return(tidied)
 
 }
 
-total_quantities_by_ <- function (input_data, grp_vars, qty_var = qty_var, unit_var = unit_var, digits = Inf, signif = Inf) {
-
-  .Deprecated("total_quantities_by")
-
-  if (missing(qty_var)) qty_var <- find_var(input_data, suffix = "_qty")
-  if (missing(unit_var)) unit_var <- find_var(input_data, suffix = "_unit")
-
-  unit_value <- unique(input_data[[unit_var]])
-  is_atomic <- function (x) (length(x) == 1)
-  if (!is_atomic(unit_value)) stop("Mixed units not yet supported")
-
-  # Curry the `total` function
-  agg <- partial(total, digits = digits, signif = signif)
-
-  # Drop the units column (temporarily)
-  pruned <- select(input_data, -dplyr::matches(unit_var))
-
-  # Group, aggregate, and ungroup
-  grouped <- group_by_at(pruned, grp_vars) # TODO: add `...`
-  totaled <- summarise_at(grouped, qty_var, funs(agg)) # TODO: add `na.rm`
-  ungrouped <- ungroup(totaled)
-
-  # Restore the units column
-  ungrouped[[unit_var]] <- unit_value
-  return(ungrouped)
-
-}

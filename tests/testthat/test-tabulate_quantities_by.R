@@ -11,3 +11,17 @@ test_that("tabulate_quantities_by (no grouping)", {
     data_frame(ems_unit = "tons/yr", PM = 212, TOG = 270))
 
 })
+
+test_that("S3 classes", {
+
+  tabulated <-
+    tput_only %>%
+    tabulate_quantities_by(year)
+
+  expect_s3_class(
+    tabulated, class(tput_only))
+
+  expect_s3_class(
+    tabulated, "tabulation")
+
+})
