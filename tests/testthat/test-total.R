@@ -24,3 +24,10 @@ test_that("character", {
     total(c("foo", "bar")),
     "must be numeric")
 })
+
+test_that("overflow", {
+  x <- rep(.Machine$integer.max, 2)
+  expect_message(
+    total(x, verbose = TRUE),
+    "WARNING")
+})

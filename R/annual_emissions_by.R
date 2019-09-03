@@ -11,7 +11,13 @@
 #' @seealso [total_emissions_by()]
 #'
 #' @export
-annual_emissions_by <- function (input_data, ..., digits = Inf, signif = Inf, verbose = getOption("verbose")) {
+annual_emissions_by <- function (
+  input_data,
+  ...,
+  digits = Inf,
+  signif = Inf,
+  verbose = getOption("verbose")
+) {
 
   total_emissions_by(
     input_data,

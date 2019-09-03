@@ -37,6 +37,7 @@ df \%>\% annual_quantities_by(foo, verbose = TRUE)
 df <- data_frame(year = 1990:1993, foo = rep(c("bar", "baz"), 2), ems_qty = 1:4, ems_unit = "tons/yr")
 df \%>\% total_quantities_by(foo, verbose = TRUE)
 df \%>\% total_quantities_by("year", foo, verbose = TRUE)
+df \%>\% total_quantities_by("year", foo, digits = 2, verbose = TRUE)
 
 }
 \seealso{

@@ -13,3 +13,28 @@ test_that("total quantities by pol_abbr", {
   expected <- ems_by_pol
   expect_equal(result, expected)
 })
+
+test_that("signif = 2", {
+
+  rounded <-
+    ems_only %>%
+    total_quantities_by(
+      pol_abbr,
+      signif = 2)
+
+  # unrounded should fail
+  expect_failure(
+    expect_equal(
+      ems_only,
+      rounded))
+
+  # rounded should succeed
+  expect_equal(
+    rounded,
+    tribble(
+      ~ pol_abbr, ~ ems_qty, ~ ems_unit,
+      "PM", 210, "tons/yr",
+      "TOG", 270, "tons/yr"))
+
+})
+

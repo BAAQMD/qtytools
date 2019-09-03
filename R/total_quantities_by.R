@@ -12,6 +12,7 @@
 #' df <- data_frame(year = 1990:1993, foo = rep(c("bar", "baz"), 2), ems_qty = 1:4, ems_unit = "tons/yr")
 #' df %>% total_quantities_by(foo, verbose = TRUE)
 #' df %>% total_quantities_by("year", foo, verbose = TRUE)
+#' df %>% total_quantities_by("year", foo, digits = 2, verbose = TRUE)
 #'
 #' @seealso [total()]
 #'
@@ -29,20 +30,34 @@ total_quantities_by <- function (
 
   msg <- function (...) if(isTRUE(verbose)) message("[total_quantities_by] ", ...)
 
-  input_vars <- names(input_data)
-  qty_vars <- select_vars(input_vars, dplyr::matches("_qty$"))
+  input_vars <-
+    names(input_data)
+
+  qty_vars <-
+    tidyselect::vars_select(
+      input_vars, dplyr::matches("_qty$"))
 
   unit_vars <- intersect(
     input_vars,
     str_replace_all(qty_vars, "_qty$", "_unit"))
 
-  by_vars <- select_vars(input_vars, ...)
+  by_vars <-
+    union(
+      unit_vars,
+      tidyselect::vars_select(
+        input_vars,
+        ...))
+
   msg("by_vars is: ", str_csv(by_vars))
 
-  grouped <- group_by_(input_data, .dots = union(by_vars, unit_vars))
+  grouped <- group_by_at(input_data, by_vars)
   msg("summing ", str_csv(qty_vars), " by ", str_csv(group_vars(grouped)))
 
-  totaled <- summarise_at(grouped, vars(one_of(qty_vars)), funs(total))
+  totaled <- summarise_at(
+    grouped,
+    vars(qty_vars),
+    ~ total(., digits = digits, signif = signif, verbose = verbose))
+
   ungrouped <- ungroup(totaled)
 
   tidied <-

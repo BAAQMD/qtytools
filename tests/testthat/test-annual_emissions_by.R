@@ -11,3 +11,21 @@ test_that("including year, redundantly", {
   expected <- ems_by_year_and_pol
   expect_equal(result, expected)
 })
+
+test_that("signif = 2", {
+
+  rounded <-
+    ems_and_tput %>%
+    annual_emissions_by(
+      year,
+      pol_abbr,
+      signif = 2)
+
+  # unrounded should fail
+  expect_failure(
+    expect_equal(
+      ems_by_year_and_pol,
+      rounded))
+
+})
+
