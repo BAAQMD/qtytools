@@ -17,6 +17,13 @@ locf <- function (object, ... ) {
 }
 
 #' @export
+locf.units <- function (object, ...) {
+  u <- units(object)
+  x <- locf(units::drop_units(object), ...)
+  units::as_units(x, u)
+}
+
+#' @export
 locf.numeric <- function (object, ...) {
   i <- !is.na(object)
   x <- unname(object)
