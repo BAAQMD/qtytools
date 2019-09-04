@@ -33,6 +33,7 @@ Collate:
     'convert_qty.R'
     'int.R'
     'is_int.R'
+    'is_units.R'
     'is_scalar.R'
     'lerp.R'
     'locf.R'
