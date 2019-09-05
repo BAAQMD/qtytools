@@ -24,7 +24,7 @@ locf.units <- function (object, ...) {
 }
 
 #' @export
-locf.numeric <- function (object, ...) {
+locf.default <- function (object, ...) {
   i <- !is.na(object)
   x <- unname(object)
   setNames(c(x[1], x[i])[cumsum(i) + 1], names(object))

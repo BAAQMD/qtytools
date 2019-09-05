@@ -1,5 +1,17 @@
 context("locf")
 
+#'-----------------------------------------------------------------------------
+
+test_that("locf (character)", {
+
+  x <- c("foo", NA, "bar", "baz", NA, NA)
+  expected <- c("foo", "foo", "bar", "baz", "baz", "baz")
+  expect_equal(locf(x), expected)
+
+})
+
+#'-----------------------------------------------------------------------------
+
 test_that("locf (numeric)", {
 
   x <- c(0, NA, 1, 2.3, NA, NA)
