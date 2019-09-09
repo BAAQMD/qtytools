@@ -1,7 +1,7 @@
 Package: qtytools
 Type: Package
 Title: Parse, Format, and Manipulate Quantities
-Version: 2019.09.05
+Version: 2019.09.09
 Author: David Holstius
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: Parse, format, summarise, tabulate, digest, interpolate, and validate integers and quantities.
