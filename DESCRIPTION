@@ -29,6 +29,7 @@ Collate:
     'annual_quantities_by.R'
     'annual_throughputs_by.R'
     'apply_scalars.R'
+    'bin.R'
     'carry_forward.R'
     'convert_qty.R'
     'int.R'
