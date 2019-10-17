@@ -14,6 +14,7 @@ Depends:
     tbltools (>= 0.9.1),
     funtools (>= 0.1.0),
     tidyselect,
+    formula.tools,
     units
 Reverse-depends: inventory
 LazyData: true
