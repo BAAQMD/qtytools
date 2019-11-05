@@ -6,7 +6,7 @@ annual_quantities_by0 <- function (input_data, ..., qty_var, unit_var, year_var 
 
   .Defunct("annual_quantities_by")
 
-  grp_vars <- select_vars(names(input_data), ...)
+  grp_vars <- tidyselect::vars_select(names(input_data), ...)
   grp_vars <- union(grp_vars, c(year = year_var))
 
   totaled <-

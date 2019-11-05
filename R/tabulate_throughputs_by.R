@@ -5,9 +5,10 @@ tabulate_throughputs_by <- function (input_data, ..., digits = Inf, signif = Inf
 
   input_vars <- names(input_data)
 
-  qty_vars <- select_vars(
-    input_vars,
-    dplyr::matches("_qty$"))
+  qty_vars <-
+    tidyselect::vars_select(
+      input_vars,
+      tidyselect::matches("_qty$"))
 
   # Drop all vars ending in `_qty` **except** `tput_qty`,
   # so that `tabulate_emissions_by()` will see only one "qty var"
