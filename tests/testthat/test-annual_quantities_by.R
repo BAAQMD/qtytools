@@ -8,7 +8,7 @@ test_that("no groups", {
 
   expect_equal(
     annual_quantities_by(ems_and_tput),
-    total_quantities_by(ems_and_tput, year))
+    sum_quantities_by(ems_and_tput, year))
 
 })
 
@@ -22,7 +22,7 @@ test_that("grouped by pol_abbr", {
 
   expect_equal(
     annual_quantities_by(ems_and_tput, pol_abbr),
-    total_quantities_by(ems_and_tput, year, pol_abbr))
+    sum_quantities_by(ems_and_tput, year, pol_abbr))
 
 })
 

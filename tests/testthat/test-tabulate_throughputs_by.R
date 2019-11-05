@@ -2,9 +2,26 @@ context("tabulate_throughputs_by")
 
 test_that("tabulate throughputs by year", {
 
-  tabulated <- tabulate_throughputs_by(ems_and_tput, year)
-  expected <- data_frame(tput_unit = "MMscf", `1991` = 230, `1992` = 112)
-  expect_equal(tabulated, expected)
+  tabulated <-
+    tabulate_throughputs_by(
+      ems_and_tput,
+      year)
+
+  expected <-
+    ems_and_tput %>%
+    sum_throughputs_by(
+      year) %>%
+    spread(
+      year,
+      tput_qty) %>%
+    select(
+      `1991`,
+      `1992`,
+      tput_unit)
+
+  expect_equal(
+    tabulated,
+    expected)
 
 })
 

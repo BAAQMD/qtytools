@@ -31,8 +31,8 @@ tabulate_quantities_by <- function (
   spread_var <-
     last(by_vars)
 
-  totaled <-
-    total_quantities_by(
+  summed_data <-
+    sum_quantities_by(
       input_data,
       !!by_vars,
       digits = digits,
@@ -50,8 +50,8 @@ tabulate_quantities_by <- function (
 
   stopifnot(length(unit_var) == 1)
 
-  tabulated <-
-    totaled %>%
+  tabulated_data <-
+    summed_data %>%
     spread(
       !!spread_var,
       !!qty_var,
@@ -59,19 +59,19 @@ tabulate_quantities_by <- function (
 
   # make unit_var the last column
   msg("moving ", unit_var, " to last column")
-  tidied <-
-    tabulated %>%
+  tidied_data <-
+    tabulated_data %>%
     select(
       -unit_var,
       everything(),
       unit_var)
 
   msg("adding 'tabulation' class")
-  class(tidied) <-
+  class(tidied_data) <-
     union(
       c("tabulation"),
       class(input_data))
 
-  return(tidied)
+  return(tidied_data)
 
 }
