@@ -40,5 +40,5 @@ sum_annual_throughputs_by <- function (
 #' @noRd
 #'
 #' @export
-annual_quantities_by <-
-  sum_annual_quantities_by
+annual_throughputs_by <-
+  sum_annual_throughputs_by
