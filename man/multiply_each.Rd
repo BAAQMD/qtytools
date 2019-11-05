@@ -7,7 +7,7 @@
 multiply_each(input_data, ..., by = 1)
 }
 \arguments{
-\item{input_data}{tbl containing columns to total}
+\item{input_data}{tbl containing columns to multiply}
 
 \item{\dots}{additional parameters passed on to methods}
 }

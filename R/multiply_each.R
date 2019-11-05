@@ -1,6 +1,6 @@
 #' Multiply numbers by a given amount
 #'
-#' @param input_data tbl containing columns to total
+#' @param input_data tbl containing columns to multiply
 #' @param \dots additional parameters passed on to methods
 #' @export
 multiply_each <- function (input_data, ..., by = 1.0) {
