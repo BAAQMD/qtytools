@@ -25,9 +25,9 @@ sum_throughputs_by <- function (
     names(input_data)
 
   qty_vars <-
-    select_vars(
+    tidyselect::vars_select(
       input_vars,
-      dplyr::matches("_qty$"))
+      tidyselect::matches("_qty$"))
 
   #unit_vars <- str_replace_all(qty_vars, "_qty$", "_unit")
 
