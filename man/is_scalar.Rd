@@ -4,8 +4,7 @@
 \alias{is_scalar}
 \title{Test whether a vector has exactly one element}
 \usage{
-is_scalar(x, metric = c("length", "elements"),
-  .xname = get_name_in_parent(x))
+is_scalar(x, metric = c("length", "elements"), .xname = get_name_in_parent(x))
 }
 \description{
 imported from package \code{assertive}

@@ -4,8 +4,16 @@
 \alias{apply_scalars}
 \title{Multiply a column in one dataset by one or more variables from another dataset}
 \usage{
-apply_scalars(input_data, using, value_col, key_col = NULL,
-  join_na = TRUE, keep_as = NULL, verbose = FALSE, warn = TRUE)
+apply_scalars(
+  input_data,
+  using,
+  value_col,
+  key_col = NULL,
+  join_na = TRUE,
+  keep_as = NULL,
+  verbose = FALSE,
+  warn = TRUE
+)
 }
 \description{
 Multiply a column in one dataset by one or more variables from another dataset

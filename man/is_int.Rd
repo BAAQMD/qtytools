@@ -12,7 +12,7 @@ is_int(x, tolerance = sqrt(.Machine$double.eps))
 \item{tolerance}{passed to \code{all.equal}}
 }
 \description{
-Is \code{x`` equivalent to the integer (rounded) version of }x`? Works for doubles, etc.
+Is \verb{x`` equivalent to the integer (rounded) version of }x`? Works for doubles, etc.
 }
 \note{
 Probably someone else has implemented a better version

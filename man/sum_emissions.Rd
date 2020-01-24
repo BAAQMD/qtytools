@@ -6,8 +6,13 @@
 \alias{annual_emissions_by}
 \title{Sum Emissions In Tabular Data}
 \usage{
-sum_emissions_by(input_data, ..., digits = Inf, signif = Inf,
-  verbose = getOption("verbose"))
+sum_emissions_by(
+  input_data,
+  ...,
+  digits = Inf,
+  signif = Inf,
+  verbose = getOption("verbose")
+)
 
 sum_annual_emissions_by(...)
 }
@@ -36,7 +41,8 @@ df \%>\% sum_annual_emissions_by(foo, verbose = TRUE)
 
 }
 \seealso{
-Other sum_by: \code{\link{sum_quantities_by}},
-  \code{\link{sum_throughputs_by}}
+Other sum_by: 
+\code{\link{sum_quantities_by}()},
+\code{\link{sum_throughputs_by}()}
 }
 \concept{sum_by}

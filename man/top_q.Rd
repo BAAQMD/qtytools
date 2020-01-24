@@ -4,8 +4,7 @@
 \alias{top_q}
 \title{Select top q rows (by value)}
 \usage{
-top_q(x, q, wt, na.rm = TRUE, .arrange = FALSE,
-  verbose = getOption("verbose"))
+top_q(x, q, wt, na.rm = TRUE, .arrange = FALSE, verbose = getOption("verbose"))
 }
 \arguments{
 \item{x}{(tabular data)}

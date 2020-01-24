@@ -7,8 +7,13 @@
 \alias{annual_throughputs_by}
 \title{Sum Throughputs In Tabular Data}
 \usage{
-sum_throughputs_by(input_data, ..., digits = Inf, signif = Inf,
-  verbose = getOption("verbose"))
+sum_throughputs_by(
+  input_data,
+  ...,
+  digits = Inf,
+  signif = Inf,
+  verbose = getOption("verbose")
+)
 
 sum_annual_throughputs_by(...)
 }
@@ -37,7 +42,8 @@ df \%>\% sum_annual_throughputs_by(foo, verbose = TRUE)
 
 }
 \seealso{
-Other sum_by: \code{\link{sum_emissions_by}},
-  \code{\link{sum_quantities_by}}
+Other sum_by: 
+\code{\link{sum_emissions_by}()},
+\code{\link{sum_quantities_by}()}
 }
 \concept{sum_by}

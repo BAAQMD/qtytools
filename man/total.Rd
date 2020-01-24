@@ -4,8 +4,13 @@
 \alias{total}
 \title{Add numbers, ignoring NAs}
 \usage{
-total(x, na.rm = TRUE, digits = Inf, signif = Inf,
-  verbose = getOption("verbose"))
+total(
+  x,
+  na.rm = TRUE,
+  digits = Inf,
+  signif = Inf,
+  verbose = getOption("verbose")
+)
 }
 \arguments{
 \item{x}{numeric vector}

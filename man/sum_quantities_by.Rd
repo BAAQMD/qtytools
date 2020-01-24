@@ -4,8 +4,13 @@
 \alias{sum_quantities_by}
 \title{Sum Quantities In Tabular Data}
 \usage{
-sum_quantities_by(input_data, ..., digits = Inf, signif = Inf,
-  verbose = getOption("verbose"))
+sum_quantities_by(
+  input_data,
+  ...,
+  digits = Inf,
+  signif = Inf,
+  verbose = getOption("verbose")
+)
 }
 \arguments{
 \item{input_data}{(tabular)}
@@ -19,7 +24,7 @@ sum_quantities_by(input_data, ..., digits = Inf, signif = Inf,
 \item{verbose}{(logical)}
 }
 \description{
-All of the variables in \code{input_data} whose names end in \code{_qty} will be summed. Corresponding variables whose names end in \code{_unit} will be preserved. Ignores \code{NA}s.
+All of the variables in \code{input_data} whose names end in \verb{_qty} will be summed. Corresponding variables whose names end in \verb{_unit} will be preserved. Ignores \code{NA}s.
 }
 \examples{
 df <- tibble(year = 1990:1993, foo = rep(c("bar", "baz"), 2), ems_qty = 1:4, ems_unit = "tons/yr")
@@ -29,7 +34,8 @@ df \%>\% sum_quantities_by("year", foo, digits = 2, verbose = TRUE)
 
 }
 \seealso{
-Other sum_by: \code{\link{sum_emissions_by}},
-  \code{\link{sum_throughputs_by}}
+Other sum_by: 
+\code{\link{sum_emissions_by}()},
+\code{\link{sum_throughputs_by}()}
 }
 \concept{sum_by}

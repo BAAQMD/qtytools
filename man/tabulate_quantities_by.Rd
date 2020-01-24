@@ -7,17 +7,33 @@
 \alias{tabulate_throughputs_by}
 \title{Total, then spread, annual quantities}
 \usage{
-tabulate_emissions_by(input_data, ..., digits = Inf, signif = Inf,
-  verbose = getOption("verbose"))
+tabulate_emissions_by(
+  input_data,
+  ...,
+  digits = Inf,
+  signif = Inf,
+  verbose = getOption("verbose")
+)
 
-tabulate_quantities_by(input_data, ..., fill = 0, digits = Inf,
-  signif = Inf, verbose = getOption("verbose"))
+tabulate_quantities_by(
+  input_data,
+  ...,
+  fill = 0,
+  digits = Inf,
+  signif = Inf,
+  verbose = getOption("verbose")
+)
 
-tabulate_throughputs_by(input_data, ..., digits = Inf, signif = Inf,
-  verbose = getOption("verbose"))
+tabulate_throughputs_by(
+  input_data,
+  ...,
+  digits = Inf,
+  signif = Inf,
+  verbose = getOption("verbose")
+)
 }
 \arguments{
-\item{input_data}{(tabular) must have a column ending in \code{_qty}}
+\item{input_data}{(tabular) must have a column ending in \verb{_qty}}
 
 \item{...}{variables to group and spread by (see Details).}
 
