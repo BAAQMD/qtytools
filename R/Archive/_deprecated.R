@@ -15,7 +15,7 @@ total_quantities_by_ <- function (input_data, grp_vars, qty_var = qty_var, unit_
   agg <- partial(total, digits = digits, signif = signif)
 
   # Drop the units column (temporarily)
-  pruned <- select(input_data, -dplyr::matches(unit_var))
+  pruned <- dplyr::select(input_data, -dplyr::matches(unit_var))
 
   # Group, aggregate, and ungroup
   grouped <- group_by_at(pruned, grp_vars) # TODO: add `...`

@@ -54,7 +54,7 @@ apply_scalars <- function (input_data, using, value_col, key_col = NULL, join_na
   result <- mutate_at(combined, vars(one_of(scalar_cols)), funs(f))
 
   if (is.null(keep_as)) {
-    result <- select(result, -dplyr::matches(value_col))
+    result <- dplyr::select(result, -dplyr::matches(value_col))
   }
 
   if (!is.null(key_col)) {
@@ -67,7 +67,7 @@ apply_scalars <- function (input_data, using, value_col, key_col = NULL, join_na
         rename_(.dots = set_names(value_col, ".old")) %>%
         gather_(key_col, value_col, scalar_cols) %>%
         mutate_(.dots = set_names(mutate_clause, keep_as)) %>%
-        select(-dplyr::matches(".old"))
+        dplyr::select(-dplyr::matches(".old"))
 
     } else {
       result <- gather_(result, key_col, value_col, scalar_cols)

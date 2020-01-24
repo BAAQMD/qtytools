@@ -20,7 +20,7 @@ annual_quantities_by0 <- function (input_data, ..., qty_var, unit_var, year_var 
 
   # Always return `year` first
   tidied <-
-    select(
+    dplyr::select(
       totaled,
       dplyr::one_of(year_var),
       everything())

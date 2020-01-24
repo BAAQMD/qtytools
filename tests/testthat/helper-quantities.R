@@ -17,12 +17,12 @@ ems_and_tput <-
     tput_qty = round(runif(n = nrow(.), min = 0, max = 100)))
 
 ems_only <-
-  select(
+  dplyr::select(
     ems_and_tput,
     -dplyr::matches("tput_"))
 
 tput_only <-
-  select(
+  dplyr::select(
     ems_and_tput,
     -dplyr::matches("ems_"))
 
@@ -35,7 +35,7 @@ tput_by_year <-
     vars(tput_qty),
     ~ sum(., na.rm = TRUE)) %>%
   ungroup() %>%
-  select(
+  dplyr::select(
     year,
     tput_qty,
     tput_unit)
@@ -50,7 +50,7 @@ ems_and_tput_by_year <-
     vars(ems_qty, tput_qty),
     ~ sum(., na.rm = TRUE)) %>%
   ungroup() %>%
-  select(
+  dplyr::select(
     year,
     ems_qty,
     ems_unit,
@@ -66,7 +66,7 @@ ems_by_pol <-
     vars(ems_qty),
     ~ sum(., na.rm = TRUE)) %>%
   ungroup() %>%
-  select(
+  dplyr::select(
     pol_abbr,
     ems_qty,
     ems_unit)
@@ -81,7 +81,7 @@ ems_by_year_and_pol <-
     vars(ems_qty),
     ~ sum(., na.rm = TRUE)) %>%
   ungroup() %>%
-  select(
+  dplyr::select(
     year,
     pol_abbr,
     ems_qty,
@@ -98,7 +98,7 @@ ems_and_tput_by_year_and_pol <-
     vars(ems_qty, tput_qty),
     ~ sum(., na.rm = TRUE)) %>%
   ungroup() %>%
-  select(
+  dplyr::select(
     year,
     pol_abbr,
     ems_qty,

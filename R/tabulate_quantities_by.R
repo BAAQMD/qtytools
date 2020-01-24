@@ -61,7 +61,7 @@ tabulate_quantities_by <- function (
   msg("moving ", unit_var, " to last column")
   tidied_data <-
     tabulated_data %>%
-    select(
+    dplyr::select(
       -unit_var,
       everything(),
       unit_var)

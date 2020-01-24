@@ -14,7 +14,7 @@ test_that("tabulate throughputs by year", {
     spread(
       year,
       tput_qty) %>%
-    select(
+    dplyr::select(
       `1991`,
       `1992`,
       tput_unit)

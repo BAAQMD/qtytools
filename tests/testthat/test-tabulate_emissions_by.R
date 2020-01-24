@@ -14,7 +14,7 @@ test_that("tabulate emissions by pol_abbr", {
     spread(
       pol_abbr,
       ems_qty) %>%
-    select(
+    dplyr::select(
       PM,
       TOG,
       ems_unit)
