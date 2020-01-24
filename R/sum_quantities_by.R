@@ -69,7 +69,7 @@ sum_quantities_by <- function (
     ungroup(summed_data)
 
   tidied_data <-
-    select(
+    dplyr::select(
       ungrouped_data,
       by_vars,
       qty_vars,

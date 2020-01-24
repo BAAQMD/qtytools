@@ -41,7 +41,7 @@ sum_annual_quantities_by <- function (
 
   # Always return `year` first
   tidied <-
-    select(
+    dplyr::select(
       summed_data,
       year_var,
       everything())
