@@ -1,7 +1,7 @@
 Package: qtytools
 Type: Package
 Title: Parse, Format, and Manipulate Quantities
-Version: 2020.01.24
+Version: 2020.03.05
 Author: David Holstius
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: Parse, format, summarise, tabulate, digest, interpolate, and validate integers and quantities.
@@ -19,7 +19,7 @@ Depends:
 Reverse-depends: inventory
 LazyData: true
 Suggests: 
-    testthat,
+    testthat (>= 2.1.0),
     rlang,
     lazyeval
 RoxygenNote: 7.0.0
