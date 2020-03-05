@@ -22,7 +22,7 @@ Suggests:
     testthat (>= 2.1.0),
     rlang,
     lazyeval
-RoxygenNote: 7.0.0
+RoxygenNote: 7.0.2
 Roxygen: list(markdown = TRUE)
 Collate: 
     'GM.R'
@@ -43,6 +43,7 @@ Collate:
     'print.R'
     'rank_fraction.R'
     'rank_product.R'
+    'round_half_up.R'
     'scale_emissions_by.R'
     'scale_throughputs_by.R'
     'sum_emissions_by.R'
