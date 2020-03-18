@@ -1,4 +1,4 @@
-test_category_totals <- data_frame(
+test_category_totals <- tibble(
   year = "CY2000",
   cat_id = int(11111, 999),
   ems_qty = c(456.7, 20.0),
