@@ -39,6 +39,8 @@ sum_quantities_by <- function (
     tidyselect::vars_select(
       input_vars, dplyr::matches("_qty$"))
 
+  msg("qty_vars is: ", str_csv(qty_vars))
+
   unit_vars <-
     intersect(
       input_vars,
@@ -58,7 +60,7 @@ sum_quantities_by <- function (
       input_data,
       by_vars)
 
-  msg("summing ", str_csv(qty_vars),
+  msg("summing ", str_and(qty_vars),
       " by ", str_csv(group_vars(grouped_data)))
 
   summed_data <-
