@@ -1,5 +1,7 @@
 #' Total, then spread, annual quantities
 #'
+#' @rdname tabulate_quantities_by
+#'
 #' @param input_data (tabular) must have a column ending in `_qty`
 #' @param ... variables to group and spread by (see Details).
 #' @param fill value for "empty cells"; see [spread()][tidyr::spread()]
@@ -40,7 +42,7 @@ tabulate_quantities_by <- function (
       verbose = verbose)
 
   # `qty_var` is needed for the `spread` operation (below)
-  qty_var <- find_var(input_data, suffix = "_qty")
+  qty_var <- find_qty_var(input_data, verbose = verbose)
   stopifnot(length(qty_var) == 1)
 
   unit_var <-

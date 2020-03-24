@@ -2,7 +2,7 @@
 
 #' @description `sum_annual_quantities_by()` is a specialized variant that always groups by `year`.
 #'
-#' @rdname sum_quantities
+#' @rdname sum_quantities_by
 #' @usage sum_annual_quantities_by(...)
 #'
 #' @examples
@@ -24,7 +24,7 @@ sum_annual_quantities_by <- function (
 
   msg <- function (...) if(isTRUE(verbose)) message("[sum_annual_quantities_by] ", ...)
 
-  year_var <- vartools::find_var(input_data, suffix = "year")
+  year_var <- vartools::find_year_var(input_data, verbose = verbose)
   msg("year_var is: ", year_var)
 
   #

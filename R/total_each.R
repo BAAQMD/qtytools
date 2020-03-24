@@ -8,5 +8,8 @@
 #' @export
 total_each <- function (input_data, ..., digits = Inf, signif = Inf) {
   # WAS: summarise_each_(input_data, funs(total(., digits)), lazyeval::lazy_dots(...))
-  summarise_at(input_data, vars(...), funs(total(., digits = digits, signif = signif)))
+  summarise_at(
+    input_data,
+    vars(...),
+    ~ total(., digits = digits, signif = signif))
 }

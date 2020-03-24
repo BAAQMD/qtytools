@@ -51,7 +51,7 @@ apply_scalars <- function (input_data, using, value_col, key_col = NULL, join_na
 
   # Distribute the scalar(s) into the values contained in the columns named by `value_cols`
   f <- function (x) x * combined[[value_col]]
-  result <- mutate_at(combined, vars(one_of(scalar_cols)), funs(f))
+  result <- mutate_at(combined, vars(one_of(scalar_cols)), ~ f(.))
 
   if (is.null(keep_as)) {
     result <- dplyr::select(result, -dplyr::matches(value_col))

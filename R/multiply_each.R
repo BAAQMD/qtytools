@@ -5,6 +5,6 @@
 #' @export
 multiply_each <- function (input_data, ..., by = 1.0) {
   f <- function (x) x * by
-  mutate_at(input_data, vars(...), funs(f))
+  mutate_at(input_data, vars(...), ~ f(.))
 }
 

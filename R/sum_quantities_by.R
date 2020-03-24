@@ -2,6 +2,8 @@
 #'
 #' All of the variables in `input_data` whose names end in `_qty` will be summed. Corresponding variables whose names end in `_unit` will be preserved. Ignores `NA`s.
 #'
+#' @rdname sum_quantities_by
+#'
 #' @param input_data (tabular)
 #' @param ... variables to group by
 #' @param digits (integer) passed to [total()]
