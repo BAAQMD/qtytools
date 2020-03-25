@@ -10,6 +10,10 @@
 #'
 #' @export
 carry_forward <- function (x) {
+
+  .Deprecated("locf")
+
   i <- !is.na(x)
   c(x[1], x[i])[cumsum(i) + 1]
+
 }
