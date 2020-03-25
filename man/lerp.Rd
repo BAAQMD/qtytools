@@ -2,26 +2,65 @@
 % Please edit documentation in R/lerp.R
 \name{lerp}
 \alias{lerp}
-\title{Linear Interpolation}
+\alias{lerp.default}
+\alias{predict.lerp}
+\title{Linear interpolation}
 \usage{
-lerp(x, ...)
+lerp(object, ...)
+
+\method{lerp}{default}(
+  object,
+  x = NULL,
+  xout = NULL,
+  nm = FALSE,
+  extrapolate = FALSE,
+  ...,
+  verbose = getOption("verbose")
+)
+
+\method{predict}{lerp}(
+  object,
+  envir = NULL,
+  method = "linear",
+  extrapolate = FALSE,
+  ...,
+  verbose = getOption("verbose")
+)
 }
 \arguments{
-\item{...}{further arguments}
+\item{object}{(see Details) must contain values to be interpolated}
 
-\item{object}{vector or data frame}
-}
-\value{
-modified copy, with NAs replaced by linearly interpolated values
+\item{...}{further arguments passed to \code{\link[stats:approx]{stats::approx()}}}
+
+\item{x}{(vector) x-coords; if not supplied, values to be interpolated are assumed to be evenly spaced}
+
+\item{xout}{(numeric) points at which to make predictions}
+
+\item{verbose}{(logical) display messages}
 }
 \description{
-Linear Interpolation
+Linear interpolation
 }
+\details{
+Names may be assigned to the resulting vector. If \code{nm} is \code{FALSE}, then no names will be assigned.
+}
+\section{Methods (by class)}{
+\itemize{
+\item \code{default}: replace NAs with interpolated values
+
+\item \code{lerp}: calculate values using a formula
+}}
+
 \examples{
 year <- c(1991, 1993, 1995, 1998)
 sales <- c(21, NA, 40, 45)
-lerp(year, sales)
 sales_model <- lerp(sales ~ year, data = data.frame(year, sales))
+
+lerp(sales)
+lerp(sales, year)
+
 predict(sales_model, data_frame(year = 1990:2000))
 predict(sales_model, data_frame(year = 1990:2000), extrapolate = TRUE)
+
 }
+\concept{lerp}
