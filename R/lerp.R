@@ -46,15 +46,19 @@ lerp.default <- function (
   if (!is.null(xout)) {
     if (isTRUE(nm)) {
       nm <- as.character(xout)
+      msg("basing nm on xout: ", str_csv(nm))
     }
   }
 
   if (is.null(x)) {
     x <- seq_along(y)
   } else {
+
     if (isTRUE(nm)) {
       nm <- as.character(x)
+      msg("basing nm on x: ", str_csv(nm))
     }
+
   }
 
   # See the documentation for `stats::approx()`, which accepts
@@ -69,12 +73,15 @@ lerp.default <- function (
     xout <- x
   }
 
+  msg("x is: ", str_csv(x))
+  msg("xout is: ", str_csv(xout))
+
   # Do the calculation, relying on stats::approx().
   pred_obj <-
     stats::approx(
-      x = x,
+      x = as.numeric(x),
       y = y,
-      xout = xout,
+      xout = as.numeric(xout),
       rule = rule,
       ...)
 

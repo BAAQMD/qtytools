@@ -20,7 +20,8 @@ test_that("lerp (numeric y, numeric x)", {
 
   expect_equal(
     result,
-    expected)
+    expected,
+    tol = 0.001)
 
 })
 
@@ -34,13 +35,14 @@ test_that("lerp (numeric y, numeric x, nm = FALSE)", {
 
   expect_equal(
     result,
-    expected)
+    expected,
+    tol = 0.001)
 
 })
 
 test_that("lerp (numeric y, numeric x, numeric xout)", {
 
-  xout <- 1991:1999
+  xout <- CY(1991:1999)
 
   result <-
     lerp(sales, year, xout = xout, nm = TRUE)
@@ -52,13 +54,14 @@ test_that("lerp (numeric y, numeric x, numeric xout)", {
 
   expect_equal(
     result,
-    expected)
+    expected,
+    tol = 0.001)
 
 })
 
 test_that("lerp (numeric y, numeric x, numeric xout, extrapolate = TRUE)", {
 
-  xout <- 1990:2002
+  xout <- CY(1990:2002)
 
   result <-
     lerp(sales, year, xout = xout, nm = TRUE, extrapolate = TRUE)
@@ -70,7 +73,8 @@ test_that("lerp (numeric y, numeric x, numeric xout, extrapolate = TRUE)", {
 
   expect_equal(
     result,
-    expected)
+    expected,
+    tol = 0.001)
 
 })
 
@@ -89,7 +93,8 @@ test_that("lerp (formula, without explicit data)", {
 
   expect_equal(
     result,
-    expected)
+    expected,
+    tol = 0.001)
 
 })
 
@@ -98,7 +103,7 @@ test_that("lerp (formula, with explict data)", {
   result <-
     lerp(
       sales ~ year,
-      data.frame(sales = sales, year = year),
+      tibble(sales, year),
       nm = TRUE)
 
   expected <-
@@ -108,6 +113,7 @@ test_that("lerp (formula, with explict data)", {
 
   expect_equal(
     result,
-    expected)
+    expected,
+    tol = 0.001)
 
 })
