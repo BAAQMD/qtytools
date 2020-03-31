@@ -40,48 +40,63 @@ lerp.default <- function (
 
   msg <- function (...) if(isTRUE(verbose)) message("[lerp.default] ", ...)
 
-  y <- object
-  stopifnot(is.numeric(y))
+  if (!is.numeric(object)) {
+    err_msg <- "[lerp] expecting numeric-ish input"
+    stop(err_msg)
+  } else {
+    y <- object
+  }
 
   if (!is.null(xout)) {
     if (isTRUE(nm)) {
       nm <- as.character(xout)
-      msg("basing nm on xout: ", str_csv(nm))
+      msg("basing nm on xout: ", str_trunc(str_csv(nm), 20))
     }
   }
 
   if (is.null(x)) {
     x <- seq_along(y)
   } else {
-
     if (isTRUE(nm)) {
       nm <- as.character(x)
-      msg("basing nm on x: ", str_csv(nm))
+      msg("basing nm on x: ", str_trunc(str_csv(nm), 20))
     }
-
-  }
-
-  # See the documentation for `stats::approx()`, which accepts
-  # an argument `rule`.
-  if (isTRUE(extrapolate)) {
-    rule <- 2
-  } else {
-    rule <- 1
   }
 
   if (is.null(xout)) {
+    msg("basing x on xout: ", str_trunc(str_csv(xout), 20))
     xout <- x
   }
 
   msg("x is: ", str_csv(x))
   msg("xout is: ", str_csv(xout))
 
+  #
+  # `stats::approx()` expects to see an (optional) `rule` argument.
+  # We prefer a slightly more humanized `extrapolate` argument.
+  #
+  if (isFALSE(extrapolate)) {
+    rule <- 1 # return NAs on both sides, left and right
+  } else {
+    if (isTRUE(extrapolate)) {
+      rule <- 2  # use data at closest extreme
+    } else {
+      rule <- extrapolate # can mix, e.g. c(1, 2)
+    }
+  }
+
+  #
   # Do the calculation, relying on stats::approx().
+  #
+  # Coercing `x` and `xout` with `as.numeric()` has the intended effect of
+  # transforming "years" (objects of class `YYYY`, and its descendants, like
+  # `CY`) into integers.
+  #
   pred_obj <-
     stats::approx(
-      x = as.numeric(x),
-      y = y,
-      xout = as.numeric(xout),
+      x = as.numeric(x),        # coerce to numeric
+      y = y,                    # see `stopifnot(is.numeric(y))`, above
+      xout = as.numeric(xout),  # coerce to numeric
       rule = rule,
       ...)
 
