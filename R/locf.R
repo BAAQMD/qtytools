@@ -11,7 +11,7 @@
 #' locf(sales)
 #' year <- c(1991, 1993, 1995, 1998)
 #' mod <- locf(sales ~ year, data = data.frame(year, sales))
-#' predict(mod, data_frame(year = 1994:2000))
+#' predict(mod, tibble::tibble(year = 1994:2000))
 locf <- function (object, ... ) {
   UseMethod("locf")
 }

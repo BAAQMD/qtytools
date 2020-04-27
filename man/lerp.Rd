@@ -59,8 +59,8 @@ sales_model <- lerp(sales ~ year, data = data.frame(year, sales))
 lerp(sales)
 lerp(sales, year)
 
-predict(sales_model, data_frame(year = 1990:2000))
-predict(sales_model, data_frame(year = 1990:2000), extrapolate = TRUE)
+predict(sales_model, tibble::tibble(year = 1990:2000))
+predict(sales_model, tibble::tibble(year = 1990:2000), extrapolate = TRUE)
 
 }
 \concept{lerp}
