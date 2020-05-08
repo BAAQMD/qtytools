@@ -13,13 +13,17 @@ Depends:
     strtools (>= 0.1.0),
     tbltools (>= 0.9.1),
     funtools (>= 0.1.0),
-    tidyselect,
-    units
-Reverse-depends: inventory
+    tidyselect
+Reverse-depends: 
+    inventory
 LazyData: true
+Imports:
+    readr,
+    rlang,
+    vctrs,
+    pillar
 Suggests: 
     testthat (>= 2.1.0),
-    rlang,
     lazyeval
 RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE)
@@ -60,6 +64,3 @@ Collate:
     'total_each.R'
     'trim_values.R'
     'zzz.R'
-Imports: 
-    vctrs,
-    pillar
