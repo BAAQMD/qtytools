@@ -11,7 +11,7 @@ test_that("tabulate emissions by pol_abbr", {
     ems_and_tput %>%
     sum_emissions_by(
       pol_abbr) %>%
-    spread(
+    tidyr::spread(
       pol_abbr,
       ems_qty) %>%
     dplyr::select(

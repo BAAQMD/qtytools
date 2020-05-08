@@ -15,12 +15,12 @@
 #' convert_quantities(1, "yard^3", "ft^3") # volume
 #' convert_quantities(212, "degF", "degC") # temperature
 #'
+#' @importFrom units as_units set_units
+#'
 #' @aliases converty_qty
 #'
 #' @export
 convert_quantities <- function (x, from, to) {
-
-  require(units)
 
   make_unit_ <- function (u) {
 
@@ -33,7 +33,7 @@ convert_quantities <- function (x, from, to) {
 
       recombined <- str_c(
         as_singular(numerator),
-        as_singular(na.omit(denominator)),
+        as_singular(stats::na.omit(denominator)),
         sep = "/")
 
       as_units(recombined)
@@ -42,7 +42,7 @@ convert_quantities <- function (x, from, to) {
 
     # If at first you don't succeed, try replacing plural forms with singular forms
     tryCatch(
-      as_units(u),
+      units::as_units(u),
       warning = try_handle_plural,
       error = try_handle_plural)
 
@@ -56,8 +56,8 @@ convert_quantities <- function (x, from, to) {
     to <- make_unit_(to)
   }
 
-  original <- as_units(x, from)
-  converted <- set_units(original, to, mode = "standard")
+  original <- units::as_units(x, from)
+  converted <- units::set_units(original, to, mode = "standard")
 
   return(converted)
 

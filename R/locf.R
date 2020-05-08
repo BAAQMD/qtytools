@@ -16,6 +16,7 @@ locf <- function (object, ... ) {
   UseMethod("locf")
 }
 
+#' @importFrom units as_units
 #' @export
 locf.units <- function (object, ...) {
   u <- units(object)
@@ -37,26 +38,27 @@ locf.formula <- function (object, data, ...) {
   return(locf_obj)
 }
 
-#' @importFrom formula.tools lhs rhs
+#' @importFrom rlang set_names f_rhs f_lhs
 #' @export
-predict.locf <- function (object, data = NULL) {
+predict.locf <- function (object, data = NULL, ...) {
 
-  require(formula.tools)
+  stop()
+
   mod <- object
 
-  x <- eval(rhs(mod$formula), envir = mod$data)
-  y <- eval(lhs(mod$formula), envir = mod$data)
-  obs <- setNames(y, as.character(x))
+  x <- eval(rlang::f_rhs(mod$formula), envir = mod$data)
+  y <- eval(rlang::f_lhs(mod$formula), envir = mod$data)
+  obs <- rlang::set_names(y, as.character(x))
 
   if (is.null(data)) {
     xout <- x
   } else {
-    xout <- eval(rhs(mod$formula), envir = data)
+    xout <- eval(rlang::f_rhs(mod$formula), envir = data)
   }
 
   domain <- as.character(sort(union(x, xout)))
   range <- as.character(xout)
 
-  obs %>% .[domain] %>% setNames(domain) %>% locf %>% .[range]
+  obs %>% .[domain] %>% rlang::set_names(domain) %>% locf %>% .[range]
 
 }

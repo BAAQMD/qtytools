@@ -11,7 +11,7 @@ test_that("tabulate_quantities_by (no grouping)", {
     tput_only %>%
     sum_quantities_by(
       year) %>%
-    spread(
+    tidyr::spread(
       year,
       tput_qty) %>%
     dplyr::select(

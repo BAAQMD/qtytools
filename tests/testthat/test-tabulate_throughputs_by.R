@@ -11,7 +11,7 @@ test_that("tabulate throughputs by year", {
     ems_and_tput %>%
     sum_throughputs_by(
       year) %>%
-    spread(
+    tidyr::spread(
       year,
       tput_qty) %>%
     dplyr::select(

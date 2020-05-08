@@ -7,7 +7,7 @@
 #' @export
 GM <- function (x, na.rm = TRUE) {
   if (is.null(x)) return(NULL)
-  if (isTRUE(na.rm)) x <- na.omit(x)
+  if (isTRUE(na.rm)) x <- stats::na.omit(x)
   logged <- log(x)
   if (any(!is.finite(logged))) return(NaN)
   exp(mean(logged))

@@ -27,9 +27,6 @@ sum_quantities_by <- function (
   verbose = getOption("verbose")
 ) {
 
-  require(lazyeval)
-  require(rlang)
-
   msg <- function (...) if(isTRUE(verbose)) message("[sum_quantities_by] ", ...)
 
   input_vars <-
@@ -37,14 +34,18 @@ sum_quantities_by <- function (
 
   qty_vars <-
     tidyselect::vars_select(
-      input_vars, dplyr::matches("_qty$"))
+      input_vars,
+      dplyr::matches("_qty$"))
 
   msg("qty_vars is: ", str_csv(qty_vars))
 
   unit_vars <-
     intersect(
       input_vars,
-      str_replace_all(qty_vars, "_qty$", "_unit"))
+      str_replace_all(
+        qty_vars,
+        "_qty$",
+        "_unit"))
 
   by_vars <-
     union(

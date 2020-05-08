@@ -9,6 +9,8 @@
 #' @param signif (optional) round results to this many *significant* digits
 #' @param verbose (logical)
 #'
+#' @importFrom vartools find_qty_var
+#'
 #' @details The last variable in `...` is used to spread (that is, to form new columns).
 #'
 #' @export
@@ -27,11 +29,13 @@ tabulate_quantities_by <- function (
     names(input_data)
 
   by_vars <-
-    input_vars %>%
-    tidyselect::vars_select(...)
+    tidyselect::vars_select(
+      input_vars,
+      ...)
 
   spread_var <-
-    last(by_vars)
+    dplyr::last(
+      by_vars)
 
   summed_data <-
     sum_quantities_by(
@@ -42,19 +46,25 @@ tabulate_quantities_by <- function (
       verbose = verbose)
 
   # `qty_var` is needed for the `spread` operation (below)
-  qty_var <- find_qty_var(input_data, verbose = verbose)
-  stopifnot(length(qty_var) == 1)
+  qty_var <-
+    vartools::find_qty_var(
+      input_data,
+      verbose = verbose)
+
+  stopifnot(
+    length(qty_var) == 1)
 
   unit_var <-
     intersect(
       names(input_data),
       str_replace(qty_var, "_qty$", "_unit"))
 
-  stopifnot(length(unit_var) == 1)
+  stopifnot(
+    length(unit_var) == 1)
 
   tabulated_data <-
-    summed_data %>%
-    spread(
+    tidyr::spread(
+      summed_data,
       !!spread_var,
       !!qty_var,
       fill = fill)
@@ -62,8 +72,8 @@ tabulate_quantities_by <- function (
   # make unit_var the last column
   msg("moving ", unit_var, " to last column")
   tidied_data <-
-    tabulated_data %>%
     dplyr::select(
+      tabulated_data,
       -unit_var,
       everything(),
       unit_var)

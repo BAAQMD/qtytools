@@ -1,3 +1,4 @@
+#' @importFrom janitor adorn_totals
 #' @method print tabulation
 #' @export
 print.tabulation <- function (
@@ -7,7 +8,6 @@ print.tabulation <- function (
 ) {
 
   if (!is.null(totals)) {
-    require(janitor)
     x <- janitor::adorn_totals(x, totals)
   }
 

@@ -13,6 +13,7 @@ Depends:
     strtools (>= 0.1.0),
     tbltools (>= 0.9.1),
     funtools (>= 0.1.0),
+    methods,
     tidyselect
 Reverse-depends: 
     inventory
@@ -21,10 +22,17 @@ Imports:
     readr,
     rlang,
     vctrs,
-    pillar
+    pillar,
+    stringr,
+    janitor,
+    glue,
+    vartools,
+    units
 Suggests: 
     testthat (>= 2.1.0),
-    lazyeval
+    lazyeval,
+    numtools,
+    yeartools
 RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE)
 Collate: 
@@ -35,7 +43,6 @@ Collate:
     'convert_qty.R'
     'int.R'
     'is_int.R'
-    'is_scalar.R'
     'is_units.R'
     'lerp.R'
     'locf.R'

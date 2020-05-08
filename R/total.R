@@ -4,6 +4,8 @@
 #' @param digits for \code{round}
 #' @param signif for \code{signif}
 #'
+#' @importFrom stringr str_trim
+#'
 #' @return sum of (non-missing) values in \code{x}
 #'
 #' @export
