@@ -1,4 +1,4 @@
 library(testthat)
-library(numtools)
+library(qtytools)
 
-test_check("numtools")
+test_check("qtytools")
