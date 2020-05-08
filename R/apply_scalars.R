@@ -2,9 +2,6 @@
 #'
 #' @importFrom tbltools fun_join
 #'
-#' @examples
-#' demo("apply_scalars", package = "inventory")
-#'
 #' @export
 apply_scalars <- function (input_data, using, value_col, key_col = NULL, join_na = TRUE, keep_as = NULL, verbose = FALSE, warn = TRUE) {
 

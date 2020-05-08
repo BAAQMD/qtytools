@@ -18,7 +18,3 @@ apply_scalars(
 \description{
 Multiply a column in one dataset by one or more variables from another dataset
 }
-\examples{
-demo("apply_scalars", package = "inventory")
-
-}
