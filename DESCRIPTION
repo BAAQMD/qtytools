@@ -1,7 +1,7 @@
 Package: qtytools
 Type: Package
 Title: Parse, Manipulate, and Predict Quantities
-Version: 2020.05.08
+Version: 2021.02.16
 Author: David Holstius
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: Parse, format, summarise, tabulate, digest, interpolate, and validate integers and quantities.
@@ -10,9 +10,9 @@ Encoding: UTF-8
 Depends: 
     tidyr,
     dplyr,
-    strtools (>= 0.1.0),
-    tbltools (>= 0.9.1),
-    funtools (>= 0.1.0),
+    strtools,
+    tbltools,
+    funtools,
     methods,
     tidyselect
 Reverse-depends: 
@@ -31,9 +31,14 @@ Imports:
 Suggests: 
     testthat (>= 2.1.0),
     lazyeval,
-    numtools,
     yeartools
-RoxygenNote: 7.1.0
+Remotes:
+    github::BAAQMD/strtools,
+    github::BAAQMD/tbltools,
+    github::BAAQMD/funtools,
+    github::BAAQMD/vartools,
+    github::BAAQMD/yeartools
+RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 Collate: 
     'GM.R'
