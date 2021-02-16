@@ -30,7 +30,7 @@ lerp(object, ...)
 \arguments{
 \item{object}{(see Details) must contain values to be interpolated}
 
-\item{...}{further arguments passed to \code{\link[stats:approx]{stats::approx()}}}
+\item{...}{further arguments passed to \code{\link[stats:approxfun]{stats::approx()}}}
 
 \item{x}{(vector) x-coords; if not supplied, values to be interpolated are assumed to be evenly spaced}
 
