@@ -1,7 +1,7 @@
 Package: qtytools
 Type: Package
 Title: Parse, Manipulate, and Predict Quantities
-Version: 2021.02.16
+Version: 2021.05.28
 Author: David Holstius
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: Parse, format, summarise, tabulate, digest, interpolate, and validate integers and quantities.
@@ -55,7 +55,6 @@ Collate:
     'minimum.R'
     'most_frequent.R'
     'multiply_each.R'
-    'pct-class.R'
     'print.R'
     'rank_fraction.R'
     'rank_product.R'
