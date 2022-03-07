@@ -10,6 +10,9 @@
 #'
 #' @rdname sum_emissions
 #'
+#' @importFrom vartools drop_vars
+#' @importFrom tidyselect matches
+#'
 #' @family sum_by
 #'
 #' @export
@@ -33,7 +36,7 @@ sum_emissions_by <- function (
 
   # Drop all `_qty` vars other than `ems_qty`
   prepared_data <-
-    drop_vars(
+    vartools::drop_vars(
       input_data,
       setdiff(qty_vars, "ems_qty"))
 
