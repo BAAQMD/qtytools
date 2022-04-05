@@ -77,15 +77,31 @@ sum_quantities_by <- function (
       units::drop_units(grouped_data),
       across(
         all_of(qty_vars),
-        total,
-        digits = digits,
-        signif = signif,
-        verbose = verbose),
+        sum),
       .groups = "drop")
+
+  if (isTRUE(is.finite(digits)) && isTRUE(is.finite(signif))) {
+    msg("WARNING: `digits` takes precedence over `signif`")
+  }
+
+  if (is.finite(digits)) {
+    msg("rounding to ", digits, " digits")
+    f <- function (x) base::round(x, digits = digits)
+  } else if (is.finite(signif)) {
+    msg("rounding to ", digits, " significant digits")
+    f <- function (x) base::signif(x, digits = signif)
+  } else {
+    f <- identity
+  }
+
+  rounded_data <-
+    dplyr::mutate(
+      summed_data,
+      across(all_of(qty_vars), f))
 
   restored_data <-
     unittools::restore_units(
-      summed_data,
+      rounded_data,
       from = grouped_data)
 
   tidied_data <-
