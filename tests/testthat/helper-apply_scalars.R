@@ -2,7 +2,7 @@ test_category_totals <- tibble(
   year = "CY2000",
   cat_id = int(11111, 999),
   ems_qty = c(456.7, 20.0),
-  ems_unit = "tons/yr")
+  ems_unit = "ton/yr")
 
 test_population_fractions <-
   tibble(year = "CY2000", ALA = 0.5, CC = 0.3, SON = 0.2)

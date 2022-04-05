@@ -10,7 +10,7 @@ ems_and_tput <-
     year = 1990 + seq_len(n),
     cat_id = c(77, 88),
     pol_abbr = c("PM", "TOG"),
-    ems_unit = "tons/yr",
+    ems_unit = "ton/yr",
     tput_unit = "MMscf") %>%
   mutate(
     ems_qty = round(runif(n = nrow(.), min = 0, max = 100)),

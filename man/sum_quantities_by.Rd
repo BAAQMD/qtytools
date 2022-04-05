@@ -37,12 +37,12 @@ All of the variables in \code{input_data} whose names end in \verb{_qty} will be
 \code{annual_quantities_by(...)} is equivalent to \code{sum_annual_quantities_by()}, but the latter is now preferred.
 }
 \examples{
-df <- tibble(year = 1990:1993, foo = rep(c("bar", "baz"), 2), ems_qty = 1:4, ems_unit = "tons/yr")
+df <- tibble(year = 1990:1993, foo = rep(c("bar", "baz"), 2), ems_qty = 1:4, ems_unit = "ton/yr")
 df \%>\% sum_quantities_by(foo, verbose = TRUE)
 df \%>\% sum_quantities_by("year", foo, verbose = TRUE)
 df \%>\% sum_quantities_by("year", foo, digits = 2, verbose = TRUE)
 
-df <- tibble(year = 1990:1993, foo = rep(c("bar", "baz"), 2), ems_qty = 1:4, ems_unit = "tons/yr")
+df <- tibble(year = 1990:1993, foo = rep(c("bar", "baz"), 2), ems_qty = 1:4, ems_unit = "ton/yr")
 df \%>\% sum_annual_quantities_by(foo, verbose = TRUE)
 
 }

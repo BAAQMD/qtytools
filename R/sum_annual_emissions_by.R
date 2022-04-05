@@ -6,7 +6,7 @@
 #' @usage sum_annual_emissions_by(...)
 #'
 #' @examples
-#' df <- tibble(year = 1990:1993, foo = rep(c("bar", "baz"), 2), ems_qty = 1:4, ems_unit = "tons/yr")
+#' df <- tibble(year = 1990:1993, foo = rep(c("bar", "baz"), 2), ems_qty = 1:4, ems_unit = "ton/yr")
 #' df %>% sum_annual_emissions_by(foo, verbose = TRUE)
 #'
 #' @note `annual_emissions_by(...)` is equivalent to `sum_annual_emissions_by()`, but the latter is now preferred.

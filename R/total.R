@@ -5,6 +5,8 @@
 #' @param signif for \code{signif}
 #'
 #' @importFrom stringr str_trim
+#' @importFrom units set_units
+#' @importFrom unittools has_units restore_units
 #'
 #' @return sum of (non-missing) values in \code{x}
 #'
@@ -25,6 +27,9 @@ total <- function (
 
   # as.numeric() helps prevent integer overflows
   summed <- sum(as.numeric(x), na.rm = na.rm)
+  if (unittools::has_units(x)) {
+    summed <- unittools::restore_units(summed, from = x)
+  }
 
   if (isTRUE(is.finite(digits)) && isTRUE(is.finite(signif))) {
     msg("WARNING: `digits` takes precedence over `signif`")
