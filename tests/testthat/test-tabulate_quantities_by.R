@@ -25,16 +25,16 @@ test_that("tabulate_quantities_by (no grouping)", {
 
 })
 
-test_that("S3 classes", {
-
-  tabulated <-
-    tput_only %>%
-    tabulate_quantities_by(year)
-
-  expect_s3_class(
-    tabulated, class(tput_only))
-
-  expect_s3_class(
-    tabulated, "tabulation")
-
-})
+# test_that("S3 classes", {
+#
+#   tabulated <-
+#     tput_only %>%
+#     tabulate_quantities_by(year)
+#
+#   expect_s3_class(
+#     tabulated, class(tput_only))
+#
+#   expect_s3_class(
+#     tabulated, "tabulation")
+#
+# })

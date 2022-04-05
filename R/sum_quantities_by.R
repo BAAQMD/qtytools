@@ -82,11 +82,11 @@ sum_quantities_by <- function (
       everything(),
       unit_vars)
 
-  msg("adding 'inventory' class")
-  class(tidied_data) <-
-    union(
-      c("inventory"),
-      class(tidied_data))
+  # msg("adding 'inventory' class")
+  # class(tidied_data) <-
+  #   union(
+  #     c("inventory"),
+  #     class(tidied_data))
 
   return(tidied_data)
 

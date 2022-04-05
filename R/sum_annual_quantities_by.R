@@ -46,10 +46,10 @@ sum_annual_quantities_by <- function (
       year_var,
       everything())
 
-  class(tidied) <-
-    union(
-      c("annual"),
-      class(input_data))
+  # class(tidied) <-
+  #   union(
+  #     c("annual"),
+  #     class(input_data))
 
   return(tidied)
 

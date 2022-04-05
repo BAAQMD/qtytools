@@ -26,12 +26,12 @@ test_that("grouped by pol_abbr", {
 
 })
 
-test_that("S3 classes", {
-
-  ems_and_tput_by_year_and_pol %>%
-    annual_quantities_by(
-      pol_abbr) %>%
-    expect_s3_class(
-      "annual")
-
-})
+# test_that("S3 classes", {
+#
+#   ems_and_tput_by_year_and_pol %>%
+#     annual_quantities_by(
+#       pol_abbr) %>%
+#     expect_s3_class(
+#       "annual")
+#
+# })

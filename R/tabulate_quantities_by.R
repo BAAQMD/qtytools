@@ -78,11 +78,11 @@ tabulate_quantities_by <- function (
       everything(),
       unit_var)
 
-  msg("adding 'tabulation' class")
-  class(tidied_data) <-
-    union(
-      c("tabulation"),
-      class(input_data))
+  # msg("adding 'tabulation' class")
+  # class(tidied_data) <-
+  #   union(
+  #     c("tabulation"),
+  #     class(input_data))
 
   return(tidied_data)
 
