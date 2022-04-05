@@ -31,3 +31,9 @@ test_that("overflow", {
     total(x, verbose = TRUE),
     "WARNING")
 })
+
+test_that("units", {
+  x <- units::set_units(c(1, 2), "ton/yr")
+  expect_equal(total(x), 3)
+  expect_identical(total(x), set_units(3, "ton/yr"))
+})
