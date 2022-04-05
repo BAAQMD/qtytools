@@ -53,8 +53,8 @@ ems_and_tput_by_year <-
   dplyr::select(
     year,
     ems_qty,
-    ems_unit,
     tput_qty,
+    ems_unit,
     tput_unit)
 
 ems_by_pol <-
@@ -102,6 +102,6 @@ ems_and_tput_by_year_and_pol <-
     year,
     pol_abbr,
     ems_qty,
-    ems_unit,
     tput_qty,
+    ems_unit,
     tput_unit)
