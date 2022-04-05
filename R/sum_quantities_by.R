@@ -10,6 +10,13 @@
 #' @param signif (integer) passed to [total()]
 #' @param verbose (logical)
 #'
+#' @importFrom units drop_units
+#' @importFrom unittools restore_units
+#' @importFrom tidyselect vars_select
+#' @importFrom dplyr matches select group_vars across
+#' @importFrom stringr str_replace_all
+#' @importFrom strtools str_csv str_and
+#'
 #' @examples
 #' df <- tibble(year = 1990:1993, foo = rep(c("bar", "baz"), 2), ems_qty = 1:4, ems_unit = "ton/yr")
 #' df %>% sum_quantities_by(foo, verbose = TRUE)
@@ -42,7 +49,7 @@ sum_quantities_by <- function (
   unit_vars <-
     intersect(
       input_vars,
-      str_replace_all(
+      stringr::str_replace_all(
         qty_vars,
         "_qty$",
         "_unit"))
@@ -57,25 +64,33 @@ sum_quantities_by <- function (
   msg("by_vars is: ", str_csv(by_vars))
 
   grouped_data <-
-    group_by_at(
+    group_by(
       input_data,
-      by_vars)
+      across(
+        all_of(by_vars)))
 
-  msg("summing ", str_and(qty_vars),
-      " by ", str_csv(group_vars(grouped_data)))
+  msg("summing ", strtools::str_and(qty_vars),
+      " by ", strtools::str_csv(dplyr::group_vars(grouped_data)))
 
   summed_data <-
-    summarise_at(
-      grouped_data,
-      vars(qty_vars),
-      ~ total(., digits = digits, signif = signif, verbose = verbose))
+    summarise(
+      units::drop_units(grouped_data),
+      across(
+        all_of(qty_vars),
+        total,
+        digits = digits,
+        signif = signif,
+        verbose = verbose),
+      .groups = "drop")
 
-  ungrouped_data <-
-    ungroup(summed_data)
+  restored_data <-
+    unittools::restore_units(
+      summed_data,
+      from = grouped_data)
 
   tidied_data <-
     dplyr::select(
-      ungrouped_data,
+      restored_data,
       by_vars,
       qty_vars,
       -unit_vars,
